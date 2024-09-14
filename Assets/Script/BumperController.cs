@@ -16,6 +16,16 @@ public class BumperController : MonoBehaviour
     private Renderer renderir;
     private Animator animator;
 
+    // tambahkan audio manager untuk mengakses fungsi pada audio managernya
+    public AudioManager audioManager;
+
+    // tambahkan vfx manager untuk mengakses fungsi pada audio managernya
+    public VFXManager VFXManager;
+
+    // untuk mengakses score manager
+    public ScoreManager scoreManager;
+    public float score;
+
     void Start()
     {
         //mengambil componenet renderer
@@ -38,6 +48,18 @@ public class BumperController : MonoBehaviour
 
             //saat ditabrak bola, mengaktifkan triger hit
             animator.SetTrigger("Hit");
+
+            // kita jalankan SFX saat tabrakan dengan bola pada posisi tabrakannya
+            audioManager.PlaySFX(collision.transform.position);
+
+            // kita jalankan VFX saat tabrakan dengan bola pada posisi tabrakannya
+            VFXManager.PlayVFX(collision.transform.position);
+
+            //tambah score saat menabrak bumper
+            scoreManager.AddScore(score);
         }
     }
+    
+
+
 }

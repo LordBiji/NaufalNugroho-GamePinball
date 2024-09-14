@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1990087591336999780}
   - component: {fileID: 6405944146841662628}
   - component: {fileID: 1930846045761182380}
-  - component: {fileID: 224508282355363516}
+  - component: {fileID: 3159927006404985705}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -124,7 +124,11 @@ MonoBehaviour:
   bola: {fileID: 0}
   color: {r: 0.745283, g: 0.23553754, b: 0.23553754, a: 0}
   multiplier: 2
---- !u!95 &224508282355363516
+  audioManager: {fileID: 0}
+  VFXManager: {fileID: 0}
+  scoreManager: {fileID: 0}
+  score: 5
+--- !u!95 &3159927006404985705
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

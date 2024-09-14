@@ -18,6 +18,15 @@ public class SwitchController : MonoBehaviour
     private SwitchState state;
     private Renderer renderer;
 
+    public ScoreManager scoreManager;
+    public float score;
+
+    // tambahkan audio manager untuk mengakses fungsi pada audio managernya
+    public AudioManager audioManager;
+
+    // tambahkan vfx manager untuk mengakses fungsi pada audio managernya
+    public VFXManager VFXManager;
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -32,8 +41,16 @@ public class SwitchController : MonoBehaviour
         if (other == bola)
         {
             Toggle();
+
+            // kita jalankan SFX saat tabrakan dengan bola pada posisi tabrakannya
+            audioManager.PlaySFX2(other.transform.position);
+
+            // kita jalankan VFX saat tabrakan dengan bola pada posisi tabrakannya
+            VFXManager.PlayVFX2(other.transform.position);
         }
+
     }
+
 
     private void Set(bool active)
     {
@@ -53,6 +70,9 @@ public class SwitchController : MonoBehaviour
 
     private void Toggle()
     {
+        //tambah score saat menyalakan atau mematikan switch
+        scoreManager.AddScore(score);
+
         if (state == SwitchState.On)
         {
             Set(false);
